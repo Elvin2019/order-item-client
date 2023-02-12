@@ -44,3 +44,20 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+Docker
+ReactJS +
+Any desire Framework or Library +
+Prettier+
+Lint +
+Jest +
+
+CRUD Lists / Forms and integrate it with API
+Propose validators in each form (Want to see some critical thinking)
+
+Testing
+
+CRUD App from Step 1
+
+Activate GitHub Actions to do verifications (propose some actions, want to see some critical thinking related it)

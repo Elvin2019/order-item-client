@@ -1,0 +1,64 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true,
+    "es2017": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:import/errors",
+    "plugin:import/typescript",
+    "plugin:prettier/recommended",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+
+  "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier"],
+
+  "settings": {
+    "react": {
+      "version": "^18.2.0"
+    }
+  },
+  "rules": {
+    "no-var": "warn",
+    "deprecation/deprecation": "off",
+    "prettier/prettier": [
+      "warn",
+      {
+        "endOfLine": "auto"
+      }
+    ],
+    "no-console": 1,
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "no-unused-vars": "off",
+    "react/prop-types": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "no-empty": "off",
+    "react-hooks/rules-of-hooks": "off",
+    "no-case-declarations": "off",
+    "react/display-name": "off",
+    "react/no-find-dom-node": "off",
+    "react/jsx-key": "off",
+    "prefer-const": "off",
+    "no-prototype-builtins": "off",
+    "no-self-assign": "off",
+    "prefer-spread": "off",
+    "no-useless-escape": "off",
+    "no-constant-condition": "off",
+    "react/no-children-prop": "off",
+    "react-hooks/exhaustive-deps": "off"
+  }
+}
