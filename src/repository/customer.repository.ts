@@ -14,8 +14,8 @@ export class CustomerRepository {
         const response = await axios.post('/customers', customer);
         return response.data;
     }
-    static async updateCustomer(customer: Partial<ICustomer>): Promise<ICustomer> {
-        const response = await axios.put(`/customers/${customer.id}`, customer);
+    static async updateCustomer(id:string, customer: Partial<ICustomer>): Promise<ICustomer> {
+        const response = await axios.put(`/customers/${id}`, customer);
         return response.data;
     }
     static async deleteCustomer(id: string): Promise<ICustomer> {

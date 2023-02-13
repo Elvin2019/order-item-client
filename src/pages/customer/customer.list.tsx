@@ -21,6 +21,7 @@ const CustomerList = () => {
   const [customers, setCustomers] = useState<ICustomer[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [open, setOpen] = useState(false);
+  const [selectedCustomer, setSelectedCustomer] = useState<ICustomer | null>(null);
 
   const refetchCustomers = async () => {
     setLoading(true);
@@ -39,20 +40,32 @@ const CustomerList = () => {
 
   const handleClose = () => {
     setOpen(false);
+    setSelectedCustomer(null);
   };
 
-  const handleAddCustomer = async (values: Partial<ICustomer>) => {
-    await CustomerRepository.createCustomer(values);
-    refetchCustomers();
+  const onSave = async (values: Partial<ICustomer>) => {
+    if (values.id) {
+      await CustomerRepository.updateCustomer(values.id, {
+        name: values.name,
+        address: values.address,
+        phoneNumber: values.phoneNumber,
+        emailAddress: values.emailAddress,
+      });
+    } else {
+      await CustomerRepository.createCustomer(values);
+    }
+    await refetchCustomers();
     handleClose();
   };
 
-  const handleEditCustomer = (customerId: string) => {
-    // handle edit customer functionality
+  const handleEditCustomer = (customer: ICustomer) => {
+    setSelectedCustomer(customer);
+    handleOpen();
   };
 
-  const handleDeleteCustomer = (customerId: string) => {
-    // handle delete customer functionality
+  const handleDeleteCustomer = async (customerId: string) => {
+    await CustomerRepository.deleteCustomer(customerId);
+    await refetchCustomers();
   };
 
   return (
@@ -87,13 +100,11 @@ const CustomerList = () => {
                     <TableCell>{customer.phoneNumber}</TableCell>
                     <TableCell>{customer.emailAddress}</TableCell>
                     <TableCell align="center">
-                      <IconButton onClick={() => handleEditCustomer(customer.id)}>
-                        {' '}
-                        <Edit />{' '}
+                      <IconButton onClick={() => handleEditCustomer(customer)}>
+                        <Edit />
                       </IconButton>
                       <IconButton onClick={() => handleDeleteCustomer(customer.id)}>
-                        {' '}
-                        <Delete />{' '}
+                        <Delete />
                       </IconButton>
                     </TableCell>
                   </TableRow>
@@ -106,7 +117,7 @@ const CustomerList = () => {
       <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
         <DialogTitle>Add Customer</DialogTitle>
         <DialogContent>
-          <CustomerForm onSave={handleAddCustomer} onClose={handleClose} />
+          <CustomerForm onSave={onSave} onClose={handleClose} initialValues={selectedCustomer} />
         </DialogContent>
       </Dialog>
     </div>

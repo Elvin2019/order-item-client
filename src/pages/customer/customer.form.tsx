@@ -16,14 +16,15 @@ const validationSchema = Yup.object({
 });
 
 interface ICustomerFormProps {
+  initialValues: ICustomer | null;
   onSave: (customer: Partial<ICustomer>) => void;
   onClose: () => void;
 }
 
-const CustomerForm = ({ onSave, onClose }: ICustomerFormProps) => {
+const CustomerForm = ({initialValues, onSave, onClose }: ICustomerFormProps) => {
   return (
     <Formik
-      initialValues={{ name: '', address: '', phoneNumber: '', emailAddress: '' }}
+      initialValues={initialValues ?? { name: '', address: '', phoneNumber: '', emailAddress: '' }}
       validationSchema={validationSchema}
       onSubmit={(values, { setSubmitting }) => {
         onSave(values)
