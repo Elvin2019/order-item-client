@@ -1,0 +1,36 @@
+.horizontal-menu {
+  border: 1px solid #ccc;
+  background-color: #f8f8f8;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.horizontal-menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.horizontal-menu li {
+  margin: 0;
+  padding: 0 16px;
+}
+
+.horizontal-menu li:hover {
+  background-color: #ddd;
+}
+
+.active {
+  font-weight: bold;
+  color: #444;
+}
+
+.horizontal-menu a {
+  text-decoration: none;
+  color: #555;
+}
+
+.horizontal-menu a:hover {
+  color: #222;
+}
