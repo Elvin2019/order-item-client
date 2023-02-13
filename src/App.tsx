@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes as Switch, Route } from "react-router-dom";
 
 import './App.css';
-import NavigationMenu from './pages/navigationMenu';
+import NavigationMenu from './pages/navigation-menu';
 import CustomerList from './pages/customer/customer.list';
 
 function App() {
