@@ -1,5 +1,5 @@
-import { ICustomer } from "./customer";
-import { ISaleOrderItem } from "./sale-order-items";
+import { ICustomer } from './customer';
+import { ISaleOrderItem } from './sale-order-items';
 
 export interface ISaleOrder {
   id: string;

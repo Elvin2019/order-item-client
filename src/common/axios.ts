@@ -1,12 +1,12 @@
-import axios from "axios";
+import axios from 'axios';
 
 const getHeader = () => {
-    return {
-      Authorization: `Bearer `,
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    };
+  return {
+    Authorization: `Bearer `,
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
   };
+};
 
 const axiosInstance = axios.create();
 axiosInstance.defaults.headers.common = getHeader();
@@ -27,12 +27,10 @@ axiosInstance.interceptors.response.use(
     return response;
   },
   async function (error) {
-    console.log({error})
     if (error.response?.status !== 404 && error.response?.status !== 401) {
     }
     return Promise.reject(error);
   }
 );
-
 
 export default axiosInstance;

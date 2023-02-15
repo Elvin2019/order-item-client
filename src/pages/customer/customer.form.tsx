@@ -1,10 +1,7 @@
 import * as Yup from 'yup';
 import { Formik, Form, Field } from 'formik';
 import { TextField } from '@material-ui/core';
-import {
-  Button,
-  DialogActions,
-} from '@material-ui/core';
+import { Button, DialogActions } from '@material-ui/core';
 import { ICustomer } from '../../models/customer';
 const validationSchema = Yup.object({
   name: Yup.string().required('Name is required'),
@@ -21,13 +18,13 @@ interface ICustomerFormProps {
   onClose: () => void;
 }
 
-const CustomerForm = ({initialValues, onSave, onClose }: ICustomerFormProps) => {
+const CustomerForm = ({ initialValues, onSave, onClose }: ICustomerFormProps) => {
   return (
     <Formik
       initialValues={initialValues ?? { name: '', address: '', phoneNumber: '', emailAddress: '' }}
       validationSchema={validationSchema}
       onSubmit={(values, { setSubmitting }) => {
-        onSave(values)
+        onSave(values);
         setSubmitting(false);
       }}
     >
@@ -88,11 +85,11 @@ const CustomerForm = ({initialValues, onSave, onClose }: ICustomerFormProps) => 
             </div>
           </div>
           <DialogActions>
-          <Button onClick={onClose} >Cancel</Button>
-          <Button type="submit"  variant="contained" color="primary">
-            Save
-          </Button>
-        </DialogActions>
+            <Button onClick={onClose}>Cancel</Button>
+            <Button type="submit" variant="contained" color="primary">
+              Save
+            </Button>
+          </DialogActions>
         </Form>
       )}
     </Formik>
